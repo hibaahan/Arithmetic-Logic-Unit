@@ -1,0 +1,644 @@
+|Lab3top
+V <= register4bits:inst9.Y3
+S3 => state4bits:inst5.S3
+S3 => register4bits:inst.x3
+S2 => register4bits:inst.x2
+S1 => register4bits:inst.x1
+S0 => register4bits:inst.x0
+clk => register4bits:inst.clk
+clk => register4bits:inst1.clk
+clk => register4bits:inst6.clk
+clk => register4bits:inst9.clk
+clk => register4bits:inst10.clk
+A3 => register4bits:inst1.x3
+A2 => register4bits:inst1.x2
+A1 => register4bits:inst1.x1
+A0 => register4bits:inst1.x0
+B3 => register4bits:inst6.x3
+B2 => register4bits:inst6.x2
+B1 => register4bits:inst6.x1
+B0 => register4bits:inst6.x0
+Z <= register4bits:inst9.Y2
+S <= register4bits:inst9.Y1
+C <= register4bits:inst9.Y0
+C3 <= register4bits:inst10.Y3
+C2 <= register4bits:inst10.Y2
+C1 <= register4bits:inst10.Y1
+C0 <= register4bits:inst10.Y0
+
+
+|Lab3top|register4bits:inst9
+Y3 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+clk => inst.CLK
+clk => inst1.CLK
+clk => inst2.CLK
+clk => inst3.CLK
+x3 => inst.DATAIN
+Y2 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+x2 => inst1.DATAIN
+Y1 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+x1 => inst2.DATAIN
+Y0 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+x0 => inst3.DATAIN
+
+
+|Lab3top|state4bits:inst5
+Cy <= inst.DB_MAX_OUTPUT_PORT_TYPE
+S3 => inst4.IN0
+Cyout => inst.IN1
+Cyout => inst3.IN0
+S <= C3.DB_MAX_OUTPUT_PORT_TYPE
+C3 => S.DATAIN
+C3 => inst10.IN0
+Z <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+C1 => inst10.IN1
+C0 => inst10.IN2
+C2 => inst10.IN3
+V <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+Cy3 => inst3.IN1
+
+
+|Lab3top|arithmeticCircuit4bit:inst60
+car2 <= arithmeticCircuit1bit:inst.ci_plus
+S2 => arithmeticCircuit1bit:inst.S2
+S2 => arithmeticCircuit1bit:inst1.S2
+S2 => arithmeticCircuit1bit:inst2.S2
+S2 => arithmeticCircuit1bit:inst3.S2
+S1 => arithmeticCircuit1bit:inst.S1
+S1 => arithmeticCircuit1bit:inst1.S1
+S1 => arithmeticCircuit1bit:inst2.S1
+S1 => arithmeticCircuit1bit:inst3.S1
+A3 => arithmeticCircuit1bit:inst.A
+B3 => arithmeticCircuit1bit:inst.B
+A2 => arithmeticCircuit1bit:inst1.A
+B2 => arithmeticCircuit1bit:inst1.B
+A1 => arithmeticCircuit1bit:inst2.A
+B1 => arithmeticCircuit1bit:inst2.B
+A0 => arithmeticCircuit1bit:inst3.A
+B0 => arithmeticCircuit1bit:inst3.B
+ci0 => arithmeticCircuit1bit:inst3.ci
+car1 <= arithmeticCircuit1bit:inst1.ci_plus
+Sum3 <= arithmeticCircuit1bit:inst.si
+Sum2 <= arithmeticCircuit1bit:inst1.si
+Sum1 <= arithmeticCircuit1bit:inst2.si
+Sum0 <= arithmeticCircuit1bit:inst3.si
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst
+si <= fulladder:inst4.si
+A => inst.IN0
+A => MUX41:inst2.D0
+S1 => MUX41:inst3.S0
+B => inst1.IN0
+B => MUX41:inst3.D0
+S2 => MUX41:inst3.S1
+ci => fulladder:inst4.ci
+ci_plus <= fulladder:inst4.ci_plus
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst|fulladder:inst4
+si <= adder:inst1.S
+ci => adder:inst1.A
+ai => adder:inst.A
+bi => adder:inst.B
+ci_plus <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst|fulladder:inst4|adder:inst1
+C <= inst.DB_MAX_OUTPUT_PORT_TYPE
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+S <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst|fulladder:inst4|adder:inst
+C <= inst.DB_MAX_OUTPUT_PORT_TYPE
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+S <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst|MUX41:inst2
+Q <= 6.DB_MAX_OUTPUT_PORT_TYPE
+INH => 7.IN0
+S1 => 8.IN0
+S0 => 10.IN0
+D0 => 2.IN3
+D1 => 3.IN3
+D2 => 4.IN3
+D3 => 5.IN3
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst|MUX41:inst3
+Q <= 6.DB_MAX_OUTPUT_PORT_TYPE
+INH => 7.IN0
+S1 => 8.IN0
+S0 => 10.IN0
+D0 => 2.IN3
+D1 => 3.IN3
+D2 => 4.IN3
+D3 => 5.IN3
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst1
+si <= fulladder:inst4.si
+A => inst.IN0
+A => MUX41:inst2.D0
+S1 => MUX41:inst3.S0
+B => inst1.IN0
+B => MUX41:inst3.D0
+S2 => MUX41:inst3.S1
+ci => fulladder:inst4.ci
+ci_plus <= fulladder:inst4.ci_plus
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst1|fulladder:inst4
+si <= adder:inst1.S
+ci => adder:inst1.A
+ai => adder:inst.A
+bi => adder:inst.B
+ci_plus <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst1|fulladder:inst4|adder:inst1
+C <= inst.DB_MAX_OUTPUT_PORT_TYPE
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+S <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst1|fulladder:inst4|adder:inst
+C <= inst.DB_MAX_OUTPUT_PORT_TYPE
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+S <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst1|MUX41:inst2
+Q <= 6.DB_MAX_OUTPUT_PORT_TYPE
+INH => 7.IN0
+S1 => 8.IN0
+S0 => 10.IN0
+D0 => 2.IN3
+D1 => 3.IN3
+D2 => 4.IN3
+D3 => 5.IN3
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst1|MUX41:inst3
+Q <= 6.DB_MAX_OUTPUT_PORT_TYPE
+INH => 7.IN0
+S1 => 8.IN0
+S0 => 10.IN0
+D0 => 2.IN3
+D1 => 3.IN3
+D2 => 4.IN3
+D3 => 5.IN3
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst2
+si <= fulladder:inst4.si
+A => inst.IN0
+A => MUX41:inst2.D0
+S1 => MUX41:inst3.S0
+B => inst1.IN0
+B => MUX41:inst3.D0
+S2 => MUX41:inst3.S1
+ci => fulladder:inst4.ci
+ci_plus <= fulladder:inst4.ci_plus
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst2|fulladder:inst4
+si <= adder:inst1.S
+ci => adder:inst1.A
+ai => adder:inst.A
+bi => adder:inst.B
+ci_plus <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst2|fulladder:inst4|adder:inst1
+C <= inst.DB_MAX_OUTPUT_PORT_TYPE
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+S <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst2|fulladder:inst4|adder:inst
+C <= inst.DB_MAX_OUTPUT_PORT_TYPE
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+S <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst2|MUX41:inst2
+Q <= 6.DB_MAX_OUTPUT_PORT_TYPE
+INH => 7.IN0
+S1 => 8.IN0
+S0 => 10.IN0
+D0 => 2.IN3
+D1 => 3.IN3
+D2 => 4.IN3
+D3 => 5.IN3
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst2|MUX41:inst3
+Q <= 6.DB_MAX_OUTPUT_PORT_TYPE
+INH => 7.IN0
+S1 => 8.IN0
+S0 => 10.IN0
+D0 => 2.IN3
+D1 => 3.IN3
+D2 => 4.IN3
+D3 => 5.IN3
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst3
+si <= fulladder:inst4.si
+A => inst.IN0
+A => MUX41:inst2.D0
+S1 => MUX41:inst3.S0
+B => inst1.IN0
+B => MUX41:inst3.D0
+S2 => MUX41:inst3.S1
+ci => fulladder:inst4.ci
+ci_plus <= fulladder:inst4.ci_plus
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst3|fulladder:inst4
+si <= adder:inst1.S
+ci => adder:inst1.A
+ai => adder:inst.A
+bi => adder:inst.B
+ci_plus <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst3|fulladder:inst4|adder:inst1
+C <= inst.DB_MAX_OUTPUT_PORT_TYPE
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+S <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst3|fulladder:inst4|adder:inst
+C <= inst.DB_MAX_OUTPUT_PORT_TYPE
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+S <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst3|MUX41:inst2
+Q <= 6.DB_MAX_OUTPUT_PORT_TYPE
+INH => 7.IN0
+S1 => 8.IN0
+S0 => 10.IN0
+D0 => 2.IN3
+D1 => 3.IN3
+D2 => 4.IN3
+D3 => 5.IN3
+
+
+|Lab3top|arithmeticCircuit4bit:inst60|arithmeticCircuit1bit:inst3|MUX41:inst3
+Q <= 6.DB_MAX_OUTPUT_PORT_TYPE
+INH => 7.IN0
+S1 => 8.IN0
+S0 => 10.IN0
+D0 => 2.IN3
+D1 => 3.IN3
+D2 => 4.IN3
+D3 => 5.IN3
+
+
+|Lab3top|register4bits:inst
+Y3 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+clk => inst.CLK
+clk => inst1.CLK
+clk => inst2.CLK
+clk => inst3.CLK
+x3 => inst.DATAIN
+Y2 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+x2 => inst1.DATAIN
+Y1 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+x1 => inst2.DATAIN
+Y0 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+x0 => inst3.DATAIN
+
+
+|Lab3top|register4bits:inst1
+Y3 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+clk => inst.CLK
+clk => inst1.CLK
+clk => inst2.CLK
+clk => inst3.CLK
+x3 => inst.DATAIN
+Y2 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+x2 => inst1.DATAIN
+Y1 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+x1 => inst2.DATAIN
+Y0 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+x0 => inst3.DATAIN
+
+
+|Lab3top|register4bits:inst6
+Y3 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+clk => inst.CLK
+clk => inst1.CLK
+clk => inst2.CLK
+clk => inst3.CLK
+x3 => inst.DATAIN
+Y2 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+x2 => inst1.DATAIN
+Y1 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+x1 => inst2.DATAIN
+Y0 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+x0 => inst3.DATAIN
+
+
+|Lab3top|74257:inst7
+Y4 <= 29.DB_MAX_OUTPUT_PORT_TYPE
+A4 => 36.IN0
+SEL => 32.IN0
+SEL => 8.IN1
+SEL => 6.IN1
+SEL => 4.IN1
+SEL => 2.IN1
+B4 => 8.IN0
+GN => 31.IN0
+Y3 <= 26.DB_MAX_OUTPUT_PORT_TYPE
+A3 => 35.IN0
+B3 => 6.IN0
+Y2 <= 22.DB_MAX_OUTPUT_PORT_TYPE
+A2 => 34.IN0
+B2 => 4.IN0
+Y1 <= 20.DB_MAX_OUTPUT_PORT_TYPE
+A1 => 33.IN0
+B1 => 2.IN0
+
+
+|Lab3top|LogicCircuit4Bit:inst4
+CL3 <= LogicCircuit1Bit:inst.CLi
+S0 => LogicCircuit1Bit:inst.S0
+S0 => LogicCircuit1Bit:inst6.S0
+S0 => LogicCircuit1Bit:inst8.S0
+S0 => LogicCircuit1Bit:inst7.S0
+S1 => LogicCircuit1Bit:inst.S1
+S1 => LogicCircuit1Bit:inst6.S1
+S1 => LogicCircuit1Bit:inst8.S1
+S1 => LogicCircuit1Bit:inst7.S1
+S2 => LogicCircuit1Bit:inst.S2
+S2 => LogicCircuit1Bit:inst6.S2
+S2 => LogicCircuit1Bit:inst8.S2
+S2 => LogicCircuit1Bit:inst7.S2
+A3 => LogicCircuit1Bit:inst.Ai
+A3 => LogicCircuit1Bit:inst6.Aiplus1
+B3 => LogicCircuit1Bit:inst.Bi
+A2 => LogicCircuit1Bit:inst.Aiminus1
+A2 => LogicCircuit1Bit:inst6.Ai
+A2 => LogicCircuit1Bit:inst7.Aiplus1
+CL2 <= LogicCircuit1Bit:inst6.CLi
+B2 => LogicCircuit1Bit:inst6.Bi
+A1 => LogicCircuit1Bit:inst6.Aiminus1
+A1 => LogicCircuit1Bit:inst8.Aiplus1
+A1 => LogicCircuit1Bit:inst7.Ai
+CL0 <= LogicCircuit1Bit:inst8.CLi
+A0 => LogicCircuit1Bit:inst8.Ai
+A0 => LogicCircuit1Bit:inst7.Aiminus1
+B0 => LogicCircuit1Bit:inst8.Bi
+cl1 <= LogicCircuit1Bit:inst7.CLi
+B1 => LogicCircuit1Bit:inst7.Bi
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst
+CLi <= 74151:inst.Y
+S2 => 74151:inst.C
+S1 => 74151:inst.B
+S0 => 74151:inst.A
+Ai => inst6.IN0
+Ai => inst5.IN0
+Ai => inst4.IN1
+Ai => inst3.IN0
+Bi => inst7.IN0
+Bi => inst5.IN1
+Bi => inst4.IN0
+Bi => inst3.IN1
+Aiminus1 => 74151:inst.D6
+Aiplus1 => 74151:inst.D7
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst|74151:inst
+c => f74151:sub.c
+b => f74151:sub.b
+a => f74151:sub.a
+d[0] => f74151:sub.d[0]
+d[1] => f74151:sub.d[1]
+d[2] => f74151:sub.d[2]
+d[3] => f74151:sub.d[3]
+d[4] => f74151:sub.d[4]
+d[5] => f74151:sub.d[5]
+d[6] => f74151:sub.d[6]
+d[7] => f74151:sub.d[7]
+gn => ~NO_FANOUT~
+y <= f74151:sub.y
+wn <= f74151:sub.wn
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst|74151:inst|f74151:sub
+WN <= 85.DB_MAX_OUTPUT_PORT_TYPE
+D0 => 59.IN0
+A => 19.IN0
+D1 => 60.IN0
+B => 17.IN0
+D2 => 61.IN0
+D3 => 62.IN0
+C => 16.IN0
+D4 => 63.IN0
+D5 => 64.IN0
+D6 => 65.IN0
+D7 => 66.IN0
+GN => 13.IN0
+y <= 82.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst6
+CLi <= 74151:inst.Y
+S2 => 74151:inst.C
+S1 => 74151:inst.B
+S0 => 74151:inst.A
+Ai => inst6.IN0
+Ai => inst5.IN0
+Ai => inst4.IN1
+Ai => inst3.IN0
+Bi => inst7.IN0
+Bi => inst5.IN1
+Bi => inst4.IN0
+Bi => inst3.IN1
+Aiminus1 => 74151:inst.D6
+Aiplus1 => 74151:inst.D7
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst6|74151:inst
+c => f74151:sub.c
+b => f74151:sub.b
+a => f74151:sub.a
+d[0] => f74151:sub.d[0]
+d[1] => f74151:sub.d[1]
+d[2] => f74151:sub.d[2]
+d[3] => f74151:sub.d[3]
+d[4] => f74151:sub.d[4]
+d[5] => f74151:sub.d[5]
+d[6] => f74151:sub.d[6]
+d[7] => f74151:sub.d[7]
+gn => ~NO_FANOUT~
+y <= f74151:sub.y
+wn <= f74151:sub.wn
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst6|74151:inst|f74151:sub
+WN <= 85.DB_MAX_OUTPUT_PORT_TYPE
+D0 => 59.IN0
+A => 19.IN0
+D1 => 60.IN0
+B => 17.IN0
+D2 => 61.IN0
+D3 => 62.IN0
+C => 16.IN0
+D4 => 63.IN0
+D5 => 64.IN0
+D6 => 65.IN0
+D7 => 66.IN0
+GN => 13.IN0
+y <= 82.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst8
+CLi <= 74151:inst.Y
+S2 => 74151:inst.C
+S1 => 74151:inst.B
+S0 => 74151:inst.A
+Ai => inst6.IN0
+Ai => inst5.IN0
+Ai => inst4.IN1
+Ai => inst3.IN0
+Bi => inst7.IN0
+Bi => inst5.IN1
+Bi => inst4.IN0
+Bi => inst3.IN1
+Aiminus1 => 74151:inst.D6
+Aiplus1 => 74151:inst.D7
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst8|74151:inst
+c => f74151:sub.c
+b => f74151:sub.b
+a => f74151:sub.a
+d[0] => f74151:sub.d[0]
+d[1] => f74151:sub.d[1]
+d[2] => f74151:sub.d[2]
+d[3] => f74151:sub.d[3]
+d[4] => f74151:sub.d[4]
+d[5] => f74151:sub.d[5]
+d[6] => f74151:sub.d[6]
+d[7] => f74151:sub.d[7]
+gn => ~NO_FANOUT~
+y <= f74151:sub.y
+wn <= f74151:sub.wn
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst8|74151:inst|f74151:sub
+WN <= 85.DB_MAX_OUTPUT_PORT_TYPE
+D0 => 59.IN0
+A => 19.IN0
+D1 => 60.IN0
+B => 17.IN0
+D2 => 61.IN0
+D3 => 62.IN0
+C => 16.IN0
+D4 => 63.IN0
+D5 => 64.IN0
+D6 => 65.IN0
+D7 => 66.IN0
+GN => 13.IN0
+y <= 82.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst7
+CLi <= 74151:inst.Y
+S2 => 74151:inst.C
+S1 => 74151:inst.B
+S0 => 74151:inst.A
+Ai => inst6.IN0
+Ai => inst5.IN0
+Ai => inst4.IN1
+Ai => inst3.IN0
+Bi => inst7.IN0
+Bi => inst5.IN1
+Bi => inst4.IN0
+Bi => inst3.IN1
+Aiminus1 => 74151:inst.D6
+Aiplus1 => 74151:inst.D7
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst7|74151:inst
+c => f74151:sub.c
+b => f74151:sub.b
+a => f74151:sub.a
+d[0] => f74151:sub.d[0]
+d[1] => f74151:sub.d[1]
+d[2] => f74151:sub.d[2]
+d[3] => f74151:sub.d[3]
+d[4] => f74151:sub.d[4]
+d[5] => f74151:sub.d[5]
+d[6] => f74151:sub.d[6]
+d[7] => f74151:sub.d[7]
+gn => ~NO_FANOUT~
+y <= f74151:sub.y
+wn <= f74151:sub.wn
+
+
+|Lab3top|LogicCircuit4Bit:inst4|logiccircuit1bit:inst7|74151:inst|f74151:sub
+WN <= 85.DB_MAX_OUTPUT_PORT_TYPE
+D0 => 59.IN0
+A => 19.IN0
+D1 => 60.IN0
+B => 17.IN0
+D2 => 61.IN0
+D3 => 62.IN0
+C => 16.IN0
+D4 => 63.IN0
+D5 => 64.IN0
+D6 => 65.IN0
+D7 => 66.IN0
+GN => 13.IN0
+y <= 82.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab3top|register4bits:inst10
+Y3 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+clk => inst.CLK
+clk => inst1.CLK
+clk => inst2.CLK
+clk => inst3.CLK
+x3 => inst.DATAIN
+Y2 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+x2 => inst1.DATAIN
+Y1 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+x1 => inst2.DATAIN
+Y0 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+x0 => inst3.DATAIN
+
+
